@@ -55,3 +55,17 @@ def generate_embedding(data):
         print("Failed to fetch embeddings. Status code:", response.status_code)
         return None
     return embeddings_data
+
+def generate_embedding_for_prompt(data):
+    payload = {
+        "input": data,
+        "model": "text-embedding-ada-002"
+    }
+    response = requests.post(url, headers=headers, json=payload)
+
+    if response.status_code == 200:
+        embeddings_data = response.json()
+    else:
+        print("Failed to fetch embeddings. Status code:", response.status_code)
+        return None
+    return embeddings_data

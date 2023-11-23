@@ -46,7 +46,7 @@ def insert_embeddings_to_pinecone_init(product_data):
 
         res = bot_api.generate_embedding(product)
         embeds = [record['embedding'] for record in res['data']]
-        vectors = [{"id": f"product_{i+1}", "values": embeds[0]}]
+        vectors = [{"id": str(i + 1) , "values": embeds[0]}]
         print(embeds)
         index.upsert(vectors=vectors)
 
